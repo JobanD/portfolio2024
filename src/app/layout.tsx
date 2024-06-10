@@ -5,6 +5,7 @@ import "./globals.css";
 
 // components
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import LoadingPage from "@/components/LoadingPage";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+        <Footer />
       </body>
     </html>
   );

@@ -6,12 +6,11 @@ import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
-  BookOpenText,
-  ClipboardPen,
-  Newspaper,
-  CalendarDays,
+  FolderOpenDot,
   ContactRound,
   LucideIcon,
+  GraduationCap,
+  Medal,
 } from "lucide-react"; // Importing icons
 import {
   NavigationMenu,
@@ -36,10 +35,9 @@ const Navbar: React.FC = () => {
   };
 
   const menuItems: MenuItem[] = [
-    { href: "/about", label: "About Us", icon: BookOpenText },
-    { href: "/registration", label: "Registration", icon: ClipboardPen },
-    { href: "/news", label: "News", icon: Newspaper },
-    { href: "/events", label: "Event Calendar", icon: CalendarDays },
+    { href: "/about", label: "About Us", icon: GraduationCap },
+    { href: "/projects", label: "Projects", icon: FolderOpenDot },
+    { href: "/resume", label: "Resume", icon: Medal },
     { href: "/contact", label: "Contact Us", icon: ContactRound },
   ];
 
