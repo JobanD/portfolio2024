@@ -29,9 +29,13 @@ export default function RootLayout({
         <title>Joban Dhindsa&apos; Portfolio</title>
       </head>
       <body className={inter.className}>
-        <Navbar />
-        <Suspense fallback={<LoadingPage />}>{children}</Suspense>
-        <Footer />
+        <div className="flex justify-center">
+          <div className="w-full max-w-[2000px]">
+            <Navbar />
+            <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+            <Footer />
+          </div>
+        </div>
       </body>
     </html>
   );
