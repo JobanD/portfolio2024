@@ -15,9 +15,9 @@ const content = [
       <div className="h-full w-full flex items-center justify-center text-white">
         <Image
           src="/ssbseptic.png"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
+          width={400}
+          height={400}
+          className="object-cover"
           alt="SSB Septic Pumping"
         />
       </div>
@@ -33,8 +33,8 @@ const content = [
       <div className="h-full w-full flex items-center justify-center text-white">
         <Image
           src="/fball.png"
-          width={300}
-          height={300}
+          width={400}
+          height={400}
           className="h-full w-full object-cover"
           alt="Fantasy Basketball Project"
         />
@@ -48,12 +48,12 @@ const content = [
     tech: "Technologies used: Next JS, Tailwind CSS, Contentful, Node JS",
     link: "https://windsorbhangraclub.com",
     content: (
-      <div className="h-full w-full flex items-center justify-center text-white">
+      <div className="h-full w-full flex items-center justify-center">
         <Image
           src="/windsorbhangraclub.png"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
+          width={400}
+          height={400}
+          className="object-cover"
           alt="Windsor Bhangra Club"
         />
       </div>
@@ -63,7 +63,7 @@ const content = [
 
 export function ProjectScroll() {
   return (
-    <div className="p-10">
+    <div className="p-4 md:p-6">
       <StickyScroll content={content} />
     </div>
   );

@@ -12,24 +12,24 @@ export const StickyScroll = ({
   content: {
     title: string;
     description: string;
-    tech: string; // Adding tech property
+    tech: string;
     content?: React.ReactNode | any;
-    link?: string; // Adding link property
+    link?: string;
   }[];
   contentClassName?: string;
 }) => {
-  const [activeCard, setActiveCard] = React.useState(0);
+  const [activeCard, setActiveCard] = useState(0);
   const ref = useRef<any>(null);
   const { scrollYProgress } = useScroll({
-    // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
-    // target: ref
     container: ref,
-    offset: ["start start", "end start"],
+    offset: ["start start", "end end"],
   });
   const cardLength = content.length;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
+    const cardsBreakpoints = content.map(
+      (_, index) => (index + 0.5) / cardLength
+    );
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
         const distance = Math.abs(latest - breakpoint);
@@ -49,9 +49,9 @@ export const StickyScroll = ({
     "var(--neutral-900)",
   ];
   const linearGradients = [
-    "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
-    "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
-    "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
+    "linear-gradient(to bottom right, var(--slate-800), var(--gray-900))",
+    "linear-gradient(to bottom right, var(--gray-700), var(--gray-900))",
+    "linear-gradient(to bottom right, var(--gray-800), var(--black))",
   ];
 
   const [backgroundGradient, setBackgroundGradient] = useState(
@@ -65,69 +65,79 @@ export const StickyScroll = ({
   return (
     <motion.div
       animate={{
-        backgroundColor: backgroundColors[activeCard % backgroundColors.length],
+        background: backgroundGradient,
       }}
-      className="h-[30rem] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10"
-      ref={ref}
+      className="min-h-screen lg:h-auto flex flex-col lg:flex-row justify-center items-center relative space-y-10 lg:space-y-0 lg:space-x-10 rounded-md p-10"
     >
-      <div className="relative flex items-start px-4">
-        <div className="max-w-2xl">
+      <div className="relative flex flex-col lg:flex-row justify-center items-start w-full max-w-7xl">
+        <div
+          className="w-full lg:w-1/2 px-4 overflow-y-auto h-[40rem] scrollbar-hide"
+          ref={ref}
+          style={{
+            msOverflowStyle: "none", // Hide scrollbar for IE and Edge
+            scrollbarWidth: "none", // Hide scrollbar for Firefox
+          }}
+        >
           {content.map((item, index) => (
-            <div key={item.title + index} className="my-20">
+            <div key={item.title + index} className="my-10 lg:my-24 lg:py-8">
               <motion.h2
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                transition={{ duration: 0.5 }}
                 className="text-2xl font-bold text-slate-100"
               >
                 {item.title}
               </motion.h2>
               <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-lg text-slate-300 max-w-sm mt-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                transition={{ duration: 0.5 }}
+                className="text-lg text-slate-300 mt-4"
               >
                 {item.description}
               </motion.p>
               <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-md text-slate-400 max-w-sm mt-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                transition={{ duration: 0.5 }}
+                className="text-md text-slate-400 mt-2"
               >
                 {item.tech}
               </motion.p>
+              <div className="mt-4 lg:hidden">
+                {item.link ? (
+                  <Link href={item.link} passHref>
+                    <div className="block h-full w-full cursor-pointer">
+                      {item.content}
+                    </div>
+                  </Link>
+                ) : (
+                  item.content
+                )}
+              </div>
             </div>
           ))}
-          <div className="h-40" />
         </div>
-      </div>
-      <div
-        style={{ background: backgroundGradient }}
-        className={cn(
-          "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
-          contentClassName
-        )}
-      >
-        {content[activeCard].link ? (
-          <Link href={content[activeCard].link} passHref>
-            <div className="block h-full w-full cursor-pointer">
-              {content[activeCard].content}
-            </div>
-          </Link>
-        ) : (
-          content[activeCard].content
-        )}
+        <motion.div
+          className={cn(
+            "hidden lg:flex lg:h-[40rem] lg:w-1/2 justify-center items-center rounded-md lg:sticky top-10 overflow-hidden lg:ml-10",
+            contentClassName
+          )}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          style={{ background: "none" }}
+        >
+          {content[activeCard].link ? (
+            <Link href={content[activeCard].link} passHref>
+              <div className="block h-full w-full cursor-pointer">
+                {content[activeCard].content}
+              </div>
+            </Link>
+          ) : (
+            content[activeCard].content
+          )}
+        </motion.div>
       </div>
     </motion.div>
   );
