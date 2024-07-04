@@ -45,17 +45,22 @@ const experiences = [
 ];
 
 export default function ExperienceTimeline() {
-  const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Set initial state
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  console.log(loading);
 
   return (
     <div className="p-4" style={{ position: "relative", zIndex: 1 }}>
@@ -87,8 +92,30 @@ export default function ExperienceTimeline() {
         .vertical-timeline-element p {
           color: black !important;
         }
+
+        @media (min-width: 769px) {
+          .vertical-timeline {
+            flex-direction: row !important;
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+          }
+
+          .vertical-timeline-element {
+            display: inline-block !important;
+            vertical-align: top !important;
+            margin-right: 20px !important;
+          }
+
+          .vertical-timeline-element-content-arrow {
+            display: none !important;
+          }
+
+          .vertical-timeline-element-date {
+            margin-top: 0 !important;
+          }
+        }
       `}</style>
-      <VerticalTimeline>
+      <VerticalTimeline layout={isMobile ? "1-column" : "2-columns"}>
         {experiences.map((exp, index) => (
           <VerticalTimelineElement
             key={index}

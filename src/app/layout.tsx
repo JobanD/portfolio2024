@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { ToastProvider } from "@/components/ui/toast";
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import "react-vertical-timeline-component/style.min.css";
 
@@ -31,15 +33,18 @@ export default function RootLayout({
         <title>Joban Dhindsa&apos; Portfolio</title>
       </head>
       <ThemeProvider>
-        <body className={inter.className}>
-          <div className="flex justify-center">
-            <div className="w-full max-w-[2000px]">
-              <Navbar />
-              <Suspense fallback={<LoadingPage />}>{children}</Suspense>
-              <Footer />
+        <ToastProvider>
+          <body className={inter.className}>
+            <div className="flex justify-center">
+              <div className="w-full max-w-[2000px]">
+                <Navbar />
+                <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+                <Toaster />
+                <Footer />
+              </div>
             </div>
-          </div>
-        </body>
+          </body>
+        </ToastProvider>
       </ThemeProvider>
     </html>
   );
