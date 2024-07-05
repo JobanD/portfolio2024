@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { useFormStatus } from "react-dom";
 import { useToast } from "@/components/ui/use-toast";
+import { Loader2 } from "lucide-react";
 
 interface FormData {
   email: string;
@@ -26,6 +27,7 @@ interface Errors {
 
 const ContactForm: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { pending } = useFormStatus();
   const { toast } = useToast();
   const isFirstRender = useRef(true);
@@ -84,6 +86,8 @@ const ContactForm: React.FC = () => {
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -108,6 +112,8 @@ const ContactForm: React.FC = () => {
       }
     } catch (error) {
       setOpen(true);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -135,7 +141,6 @@ const ContactForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSendEmail} noValidate className="mt-3 space-y-4">
-      <h2 className="text-2xl font-bold mb-4">Message Us Directly</h2>
       <div className="flex flex-col space-y-4">
         <input
           type="email"
@@ -190,10 +195,17 @@ const ContactForm: React.FC = () => {
         />
         <button
           type="submit"
-          disabled={pending}
-          className="w-full py-2 px-4 bg-primary text-white font-bold rounded-md hover:bg-secondary-dark transition"
+          disabled={isSubmitting}
+          className="w-full py-2 px-4 bg-primary text-white font-bold rounded-md hover:bg-secondary-dark transition flex items-center justify-center"
         >
-          Send
+          {isSubmitting ? (
+            <>
+              <Loader2 className="animate-spin mr-2" size={20} />
+              Sending...
+            </>
+          ) : (
+            "Send"
+          )}
         </button>
       </div>
     </form>

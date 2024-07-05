@@ -7,8 +7,10 @@ export default function ResumePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="w-full py-16 bg-gray-800 text-white text-center">
-        <h1 className="text-4xl font-bold">Joban Dhindsa</h1>
-        <p className="mt-4 text-xl">Full Stack Developer</p>
+        <h1 className="text-4xl font-bold">Check out my skills</h1>
+        <p className="mt-4 text-xl">
+          Let&apos;s see what I&apos;ve been up to!
+        </p>
       </header>
       <div className="flex-grow w-full max-w-4xl mx-auto mt-8 flex flex-col">
         <Tabs defaultValue="skills" className="w-full">

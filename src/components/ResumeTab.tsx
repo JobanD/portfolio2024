@@ -1,6 +1,15 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+
+const PDFViewer = dynamic(() => import("./PDFViewer"), {
+  loading: () => <p>Loading PDF viewer...</p>,
+  ssr: false, // This ensures the component only renders client-side
+});
 
 export default function ResumeTab() {
+  const [showPDF, setShowPDF] = useState(false);
+
   return (
     <div className="flex flex-col items-center">
       <div className="w-full max-w-4xl px-4">
@@ -14,7 +23,7 @@ export default function ResumeTab() {
             operational excellence and continuous learning.
           </p>
         </div>
-        <div className="mt-4 text-center">
+        <div className="mt-4 text-center space-y-4">
           <a
             href="/resume.pdf"
             download
@@ -22,7 +31,14 @@ export default function ResumeTab() {
           >
             Download Resume
           </a>
+          <button
+            onClick={() => setShowPDF(!showPDF)}
+            className="inline-block px-6 py-2 text-white bg-green-600 rounded-full hover:bg-green-700 ml-4"
+          >
+            {showPDF ? "Hide Resume" : "View Resume"}
+          </button>
         </div>
+        {showPDF && <PDFViewer />}
       </div>
     </div>
   );

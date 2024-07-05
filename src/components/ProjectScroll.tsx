@@ -3,6 +3,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { StickyScroll } from "./ui/sticky-scroll-reveal";
+import ssbseptic from "../../public/ssbseptic.png";
+import fball from "../../public/fball.png";
+import wbc from "../../public/windsorbhangraclub.png";
+import wip from "../../public/wip.jpg";
 
 const content = [
   {
@@ -14,11 +18,41 @@ const content = [
     content: (
       <div className="h-full w-full flex items-center justify-center text-white">
         <Image
-          src="/ssbseptic.png"
-          width={400}
-          height={400}
-          className="object-cover"
+          src={ssbseptic}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+          className="object-cover w-full h-full"
           alt="SSB Septic Pumping"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Freight Management System",
+    description:
+      "A custom web solution for a business that hauls vehicles, featuring dispatching orders to drivers, viewing historical data for reports, generating BOLs, and integrating with Motive. Built with a focus on performance, security, and scalability.",
+    tech: "Technologies used: Next.js, TypeScript, Go, PostgreSQL, Cloudflare, React Native, Supabase",
+    link: "https://github.com/JobanD/sb-trucking-admin",
+    content: (
+      <div className="h-full w-full flex items-center justify-center">
+        <Image
+          src={wip}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+          className="object-cover w-full h-full"
+          alt="Freight Management System"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
         />
       </div>
     ),
@@ -32,11 +66,17 @@ const content = [
     content: (
       <div className="h-full w-full flex items-center justify-center text-white">
         <Image
-          src="/fball.png"
-          width={400}
-          height={400}
-          className="h-full w-full object-cover"
+          src={fball}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+          className="object-cover w-full h-full"
           alt="Fantasy Basketball Project"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
         />
       </div>
     ),
@@ -50,11 +90,17 @@ const content = [
     content: (
       <div className="h-full w-full flex items-center justify-center">
         <Image
-          src="/windsorbhangraclub.png"
-          width={400}
-          height={400}
-          className="object-cover"
+          src={wbc}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+          className="object-cover w-full h-full"
           alt="Windsor Bhangra Club"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
         />
       </div>
     ),

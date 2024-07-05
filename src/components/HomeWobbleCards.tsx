@@ -18,16 +18,16 @@ export function HomeWobbleCards() {
       >
         <div className="max-w-xs">
           <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-            About Me
+            Contact Me
           </h2>
           <p className="mt-4 text-left text-base/6 text-neutral-200">
-            Learn more about my background, my journey as a full stack
-            developer, and my passion for technology.
+            Don&apos;t hesitate to contact me directy through email or any of my
+            socials!
           </p>
           <div className="mt-4">
-            <Link href="/about">
+            <Link href="/contact">
               <button className="inline-block px-8 py-3 text-lg font-semibold text-white bg-indigo-500 rounded-lg shadow-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition">
-                Read More
+                Get in touch
               </button>
             </Link>
           </div>

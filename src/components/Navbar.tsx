@@ -9,7 +9,6 @@ import {
   FolderOpenDot,
   ContactRound,
   LucideIcon,
-  GraduationCap,
   Medal,
 } from "lucide-react"; // Importing icons
 import {
@@ -35,7 +34,6 @@ const Navbar: React.FC = () => {
   };
 
   const menuItems: MenuItem[] = [
-    { href: "/about", label: "About Us", icon: GraduationCap },
     { href: "/projects", label: "Projects", icon: FolderOpenDot },
     { href: "/resume", label: "Resume", icon: Medal },
     { href: "/contact", label: "Contact Us", icon: ContactRound },

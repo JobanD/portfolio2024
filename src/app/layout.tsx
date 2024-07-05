@@ -32,9 +32,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Joban Dhindsa&apos; Portfolio</title>
       </head>
-      <ThemeProvider>
-        <ToastProvider>
-          <body className={inter.className}>
+      <body className={inter.className}>
+        <ThemeProvider>
+          <ToastProvider>
             <div className="flex justify-center">
               <div className="w-full max-w-[2000px]">
                 <Navbar />
@@ -43,9 +43,9 @@ export default function RootLayout({
                 <Footer />
               </div>
             </div>
-          </body>
-        </ToastProvider>
-      </ThemeProvider>
+          </ToastProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
