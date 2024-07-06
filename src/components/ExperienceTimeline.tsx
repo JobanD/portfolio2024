@@ -15,32 +15,34 @@ const experiences = [
     title: "Full Stack Freight Management Application",
     company: "Network Logistics, Toronto, ON",
     details:
-      "Developing comprehensive freight management solution for a vehicle transportation company, enabling efficient management of deliveries to/from auctions, dealerships, etc.",
+      "Developing a customized freight management solution for a vehicle transportation company, enabling efficient management of deliveries, operations, reports, expenses, and etc.",
   },
   {
     time: "May 2023 - Present",
     title: "Full Stack Engineer",
     company: "Canada Clean Fuels, North York, ON",
     details:
-      "Developed dynamic and responsive web apps using MERN and Django/Next.js stacks.",
+      "Developed dynamic and responsive web apps using MERN and Django/Next.js stacks. Completed data intensive duties through the use of PostgreSQL, Python Scripts, and Airflow.",
   },
   {
     time: "Mar. 2023 - Aug. 2023",
     title: "React Developer",
     company: "Doxa Fantasy, Vancouver, BC",
-    details: "Developed the MVP for a fantasy sports platform",
+    details:
+      "Helped develop the MVP for a unique fantasy football application aiming to revolutionize the game.",
   },
   {
     time: "Sep. 2020 - Dec. 2021",
     title: "Front End Developer",
     company: "University of Windsor, Windsor, ON",
-    details: "Enhanced the University of Windsor's website using Drupal.",
+    details:
+      "Managed and enhanced the official University of Windsor website using web development skills in HTML, CSS, Javascript, PHP, and Drupal",
   },
   {
     time: "Sep. 2017 - May 2020",
     title: "Web Developer",
     company: "Odette Commerce Society, Windsor, ON",
-    details: "Developed OCS's website, serving 1600+ students.",
+    details: "Developed and maintained OCS's website, serving 1600+ students.",
   },
 ];
 
